@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>从零开始创建一个hexo主题-01 | navi&#39;s blog - 陪伴是最长情的告白</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="此篇只是开篇文章，涉及到大量废话，想要直接看干货的，就直接进入坑点部分  起因最近买了个服务器和域名，想着捣鼓一下博客好了。于是呢。。就找到了hexo，接着又看到了一大堆主题。那个琳琅满目，目不暇接。哈。。我可是选择困难症，反正是自己的网站，就自己写个主题好了。所以就有了这篇文章。 目的就是看看自己从零开始能遇到多少坑，解决多少坑，同时给有想法的朋友们提供一个借鉴的东西。谜之声：其实就是怕自己懒">
+<meta name="keywords" content="hexo主题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始创建一个hexo主题-01">
+<meta property="og:url" content="http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/index.html">
+<meta property="og:site_name" content="navi&#39;s blog">
+<meta property="og:description" content="此篇只是开篇文章，涉及到大量废话，想要直接看干货的，就直接进入坑点部分  起因最近买了个服务器和域名，想着捣鼓一下博客好了。于是呢。。就找到了hexo，接着又看到了一大堆主题。那个琳琅满目，目不暇接。哈。。我可是选择困难症，反正是自己的网站，就自己写个主题好了。所以就有了这篇文章。 目的就是看看自己从零开始能遇到多少坑，解决多少坑，同时给有想法的朋友们提供一个借鉴的东西。谜之声：其实就是怕自己懒">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/prpr.jpg">
+<meta property="og:updated_time" content="2019-06-05T09:46:34.407Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始创建一个hexo主题-01">
+<meta name="twitter:description" content="此篇只是开篇文章，涉及到大量废话，想要直接看干货的，就直接进入坑点部分  起因最近买了个服务器和域名，想着捣鼓一下博客好了。于是呢。。就找到了hexo，接着又看到了一大堆主题。那个琳琅满目，目不暇接。哈。。我可是选择困难症，反正是自己的网站，就自己写个主题好了。所以就有了这篇文章。 目的就是看看自己从零开始能遇到多少坑，解决多少坑，同时给有想法的朋友们提供一个借鉴的东西。谜之声：其实就是怕自己懒">
+<meta name="twitter:image" content="http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/prpr.jpg">
+  
+  
+  
+
+  
+    <link rel="icon" href="//avatars0.githubusercontent.com/u/18321310?s=460&v=4">
+    <link rel="apple-touch-icon" href="//avatars0.githubusercontent.com/u/18321310?s=460&v=4">
+  
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css">
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      NProgress.start()
+      $(document).on('readystatechange', function () {
+        if (document.readyState === 'complete') NProgress.done()
+      })
+      var elements = $('img, script').not('img.scroll')
+      var loaded = 0
+      elements.on('load', function () {
+        if (loaded === elements.length) NProgress.done()
+        else {
+          var val = ++loaded / elements.length
+          NProgress.status > val ? NProgress.inc(val) : NProgress.set(val)
+        }
+      })
+    })
+  </script>
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/csshake/1.5.2/csshake.min.css">
+  <link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/headroom/0.9.4/headroom.min.js"></script>
+  <script src="//cdn.bootcss.com/headroom/0.9.4/jQuery.headroom.min.js"></script>
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.3.6/scrollreveal.min.js"></script>
+  <script>
+    $(function() {
+      // Init ScrollReveal Animate
+      window.sr = new ScrollReveal();
+      window.sr.reveal('#profile', { viewFactor: 0, mobile: false });
+      window.sr.reveal('article, .timeline, .layout-wrap', {
+        reset: window.location.pathname === '/',
+        delay: 100,
+        useDelay: 'once',
+        viewFactor: 0
+      });
+      window.sr.reveal('#sidebar', { delay: 200, useDelay: 'once', viewFactor: 0 });
+    })
+  </script>
+  
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/lightgallery/1.6.0/css/lightgallery.min.css">
+  
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/justifiedGallery/3.6.3/css/justifiedGallery.min.css">
+  
+  
+  
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+  
+  
+  
+
+
+</head>
+</html>
+<body>
+  <div id="container" style="position: absolute;left: 0; right: 0;">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo">
+        <i class="logo"></i>
+        <span class="site-title">navi&#39;s blog</span>
+      </a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+        
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;">
+              <img class="avatar" src="//avatars0.githubusercontent.com/u/18321310?s=460&amp;v=4">
+              <i class="fa fa-caret-down"></i>
+            </a>
+          </div>
+        </nav>
+      
+      <div id="search-form-wrap">
+
+  <!--search_form直接调用了google搜索框 hexo提供-->
+  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://movom.cc"></form>
+
+</div>
+
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+          <td><a class="main-nav-link" href="/">首页</a></td>
+        
+          <td><a class="main-nav-link" href="/archives">归档</a></td>
+        
+          <td><a class="main-nav-link" href="/categories">分类</a></td>
+        
+          <td><a class="main-nav-link" href="/tags">标签</a></td>
+        
+          <td><a class="main-nav-link" href="/about">关于</a></td>
+        
+        <td>
+          
+  <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://movom.cc"></form> -->
+
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+    
+      
+<div id="site-banner">
+  <div id="site-banner-img">
+    <s class="shadow top-shadow"></s>
+    <s class="shadow bottom-shadow"></s>
+  </div>
+  <div id="site-banner-master">
+    <img class="site-banner-master-avatar" src="//avatars0.githubusercontent.com/u/18321310?s=460&amp;v=4" alt="NAVI">
+    <h2 class="site-banner-master-description">
+      
+        <script src="http://api.movom.cc/hitokoto"></script>
+<div id="hitokoto"><script defer>hitokoto()</script></div>
+      
+    </h2>
+  </div>
+</div>
+
+    
+    <div class="outer">
+      
+        
+
+<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="//avatars0.githubusercontent.com/u/18321310?s=460&amp;v=4">
+      <h2 id="name">navi</h2>
+      <h3 id="title">Web Developer</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Shenzhen, China</span>
+      <span id="bio">I maybe bad,but i feel good.</span>
+      <a id="follow" target="_blank" href="https://github.com/magicianShiro">关注我</a>
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        3
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        3
+        <span>标签</span>
+      </div>
+    </div>
+      
+      <div class="profile-block social-links">
+        <table>
+          <tr>
+            
+            
+            <td>
+              <a href="https://github.com/magicianShiro" target="_blank" title="github" class="tooltip">
+                <i class="fa fa-github"></i>
+              </a>
+            </td>
+            
+            <td>
+              <a href="https://weibo.com/u/3041121595" target="_blank" title="weibo" class="tooltip">
+                <i class="fa fa-weibo"></i>
+              </a>
+            </td>
+            
+          </tr>
+        </table>
+      </div>
+      
+  </div>
+  <!--do_you_like_me 插件-->
+  
+  <!-- aplayer插件 -->
+  
+</aside>
+
+      
+      <section id="main">
+  
+    <script src="/js/toContent.js"></script>
+  
+
+<article id="posts-create-hexo-them-from-zero-01" class="article article-type-posts" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <div class="background"></div>
+      <script>
+        ;!(function($) {
+          var max = 99;
+          var index = Math.floor(Math.random() * max) + 1;
+          $('.background').css({ backgroundImage: 'url("/css/images/article/'+ index +'.png")', opacity: 0.5 });
+        })(jQuery)
+      </script>
+    
+    
+      
+
+  
+	
+		<img src="/2017/07/11/create-hexo-them-from-zero-01/prpr.jpg" class="article-banner">
+	
+
+
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      从零开始创建一个hexo主题-01
+    </h1>
+  
+
+
+        
+          <div class="article-meta">
+            
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/07/11/create-hexo-them-from-zero-01/">
+      <time datetime="2017-07-11T06:58:05.000Z" itemprop="datePublished">2017-07-11</time>
+    </a>
+  </div>
+
+
+            
+  <div class="article-category">
+    <i class="fa fa-folder"></i>
+      <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+
+            
+  <div class="article-tag">
+    <i class="fa fa-tag"></i>
+    <a class="tag-link" href="/tags/hexo主题/">hexo主题</a>
+  </div>
+
+
+          </div>
+        
+      </header>
+    
+    
+
+    <div class="article-entry" itemprop="articleBody">
+    
+      
+      <blockquote>
+<p>此篇只是开篇文章，涉及到大量废话，想要直接看干货的，就直接进入<a href="#坑点">坑点部分</a></p>
+</blockquote>
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近买了个服务器和域名，想着捣鼓一下博客好了。于是呢。。就找到了hexo，接着又看到了一大堆主题。<br><img src="/2017/07/11/create-hexo-them-from-zero-01/emmm.jpg" title="emmmmmm.."><br>那个琳琅满目，目不暇接。哈。。我可是选择困难症，反正是自己的网站，就自己写个主题好了。所以就有了这篇文章。</p>
+<h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>就是看看自己从零开始能遇到多少坑，解决多少坑，同时给有想法的朋友们提供一个借鉴的东西。<br>谜之声：其实就是怕自己懒，搞着搞着不想搞了…<br>这个系列，姑且先叫做这个系列吧，大概能看到哪些内容呢？<br>哈……你还真以为只有 HEXO 的内容啊，太天真了。<br>基本上从零开始到完成，中间用到的知识都会涉及到，但是可能开其他的标题和标签而不算在这个系列之中。但是肯定能跳过去的。<br>例如：怎么把这玩意儿部署到自己的服务器上之类的……</p>
+<a id="more"></a>
+<h1 id="闲谈"><a href="#闲谈" class="headerlink" title="闲谈"></a>闲谈</h1><p>暂停一下，我先给大家讲个笑话，你们看看这篇文章的日期，2017-07-11，你猜猜我写到这句话的时候是几月几号…<br>好吧，今天是7月20号，那么中间有9天（其实有10天了）都干了些啥呢，连第一篇文章都没开稿。<br>实不相瞒，这些天（除了双休啊，双休在肝碧蓝航线。。）通读了一两遍 HEXO 的文档，我只想说，有中文真是太棒了。<br>然后写主题的模板</p>
+<ul>
+<li>html 的模板我选择了 <strong>pug</strong> </li>
+<li>css 的预处理器我选择了 <strong>stylus</strong></li>
+</ul>
+<p>为什么选择这两个模板呢？ 因为我不会啊。。啊哈哈哈<br><img src="/2017/07/11/create-hexo-them-from-zero-01/wyst.jpg" title="我要上天"><br>既然都要开始搞事情，干脆顺便学点东西吧。我就是这么想的<br>还有就是，在主题写完之前，估计只能用别人的主题了。。这就是你看到的为什么是 next 这个主题的原因了。</p>
+<h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><p>其实没有什么计划啦。估计下一篇是写一篇介绍 HEXO 怎么用的文章了，后面的后面再说。<br>不过我觉得再接下来估计就是怎么搭到自己的服务器上了。。。</p>
+<h1 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h1><p>还没开始就已经遇到坑了。。嗯，也是没谁了<br>坑点 </p>
+<ol>
+<li>在markdown插入图片怎么弄</li>
+<li>用markdown的语法 <code>![test](url)</code> 插入的图片，在首页上是显示不出来的。。也就是在你写的 more 的前面的图片会出现问题 <img src="error.png" alt="error">就像这张图片这样。。当然你写在more下面的就无所谓。反正首页上也看不到</li>
+<li>点击标签，但是还是不能显示tags页面</li>
+<li>tags页面能显示了，但是里面没内容</li>
+</ol>
+<p>填坑</p>
+<ol>
+<li>将_config.yml 中的 <code>post_asset_folder</code> 属性值改为 true 这样在你每一次使用 hexo new 命令的时候就会生成一个同名的文件夹，然后把图片放入其中即可。 具体请参照 HEXO 官方文档 <a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">资源文件夹</a></li>
+<li>既然markdown语法插入的图片显示有问题， 那我就接着翻文档。emmm..还真就找到了。同样在资源文件中写到：使用 <code>\{\% asset_link slug [title] \%\}</code>  即可解决插入的图片在主页上显示不出的问题(记得把\去掉，这里这样写个\是因为不写会被解析掉。)。。举个例子就是<code>\{\% asset_img emmm.jpg emmmmmm.. \%\}</code>像这样咯，这张图也就是写在 <a href="#起因">起因</a> 中的那张图。具体请参照 HEXO 官方文档 <a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">资源文件夹</a><blockquote>
+<p>我瞅了一眼， 目测这是ejs模板的写法，毕竟 HEXO 下好自带的 theme 就是ejs模板的。而我用的pug模板。。不然这样依旧可以用，应该是pug和ejs都给解析了。。厉害，厉害 RBQ RBQ</p>
+</blockquote>
+</li>
+<li>不能显示tags是因为你没有创建tags的文件夹，你可以执行命令 <code>hexo new page tags</code> 生成一个tags文件夹（也可以自己手动创建，不过还是用命令比较好），并且确保站点的_config.yml文件中的 <code>tag_dir</code> 属性存在并且对应的值为 tags(你不改默认配置，这里都不会有问题)。还有一点就是确保主题的menu下有 tags 属性，并且对应的值为 /tags/（好像也不是一定会叫做 menu ）。</li>
+<li>生成的tags同名文件夹下有一个 index.md 文件，一开始里面只有2个属性 <code>title</code> 和 <code>date</code> 我加上了一个<code>type: &#39;tags&#39;</code> 标签页就可以直接显示了。。</li>
+</ol>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>哈，我还是文字功底太弱，本来想把博客写得诙谐幽默有意思一点，可是。。可是。还是太菜了啊。。只能说慢慢提升吧。<br>希望你们有生之年能够看到那一天到来。博客不定期更新，而且这段时间除了撸各种文档，我一直冥思苦想，这个主题做成啥样呢，想来想去。嗯，先做了再说吧。。做成什么样让天去决定。</p>
+
+    
+    </div>
+    <footer class="article-footer">
+      
+        <a href="http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/" id="busuanzi_container_page_pv">
+          <i class="fa fa-eye"></i> 阅读: <span id="busuanzi_value_page_pv">0</span>
+        </a>
+      
+      <div class="share-container">
+  
+  
+  
+</div>
+
+  <a data-url="http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/" data-id="cjwj1w9jw0000mkvh9i0oey5a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+  (function ($) {
+    // Prevent duplicate binding
+    if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+      __SHARE_BUTTON_BINDED__ = true;
+    } else {
+      return;
+    }
+    $('body').on('click', function() {
+      $('.article-share-box.on').removeClass('on');
+    }).on('click', '.article-share-link', function(e) {
+      e.stopPropagation();
+
+      var $this = $(this),
+        url = $this.attr('data-url'),
+        encodedUrl = encodeURIComponent(url),
+        id = 'article-share-box-' + $this.attr('data-id'),
+        offset = $this.offset(),
+        box;
+
+      if ($('#' + id).length) {
+        box = $('#' + id);
+        if (box.hasClass('on')){
+          box.removeClass('on');
+          return;
+        }
+      } else {
+        var html = [
+          '<div id="' + id + '" class="article-share-box">',
+            '<input class="article-share-input" value="' + url + '">',
+            '<div class="article-share-links">',
+              '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+              '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+              '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+              '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+            '</div>',
+          '</div>'
+        ].join('');
+
+        box = $(html);
+
+        $('body').append(box);
+      }
+
+      $('.article-share-box.on').hide();
+
+      box.css({
+        top: offset.top + 25,
+        left: offset.left
+      }).addClass('on');
+
+    }).on('click', '.article-share-box', function (e) {
+      e.stopPropagation();
+    }).on('click', '.article-share-box-input', function () {
+      $(this).select();
+    }).on('click', '.article-share-box-link', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+    });
+  })(jQuery);
+</script>
+
+
+
+      
+  
+    <a href="http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/">评论</a>
+  
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/03/stylus-in-vue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          vue中引用css的预编译器的路径问题
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+  
+</article>
+
+  
+  
+    <section id="comments">
+  <div id="disqus_thread">
+    <strong>Disqus 加载中...</strong>
+    <p>如果长时间无法加载，请针对 disq.us | disquscdn.com | disqus.com 启用代理</p>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+
+</section>
+  
+
+
+
+
+
+</section>
+      
+        
+<aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2018/02/03/create-hexo-theme-from-zero-end/" class="thumbnail">
+  
+  
+    <span style="background-image:url(//image.movom.cc/blog/page/create-hexo-theme-from-zero-end.jpeg)" alt="从零开始创建一个hexo主题-end" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+              <p class="item-title"><a href="/2018/02/03/create-hexo-theme-from-zero-end/" class="title">从零开始创建一个hexo主题-end</a></p>
+              <p class="item-date"><time datetime="2018-02-03T14:52:43.000Z" itemprop="datePublished">2018-02-03</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2017/08/03/stylus-in-vue/" class="thumbnail">
+  
+  
+    <span style="background-image:url(/2017/08/03/stylus-in-vue/futaba.jpg)" alt="vue中引用css的预编译器的路径问题" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+              <p class="item-title"><a href="/2017/08/03/stylus-in-vue/" class="title">vue中引用css的预编译器的路径问题</a></p>
+              <p class="item-date"><time datetime="2017-08-03T01:06:44.000Z" itemprop="datePublished">2017-08-03</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2017/07/11/create-hexo-them-from-zero-01/" class="thumbnail">
+  
+  
+    <span style="background-image:url(/2017/07/11/create-hexo-them-from-zero-01/prpr.jpg)" alt="从零开始创建一个hexo主题-01" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/技术/">技术</a></p>
+              <p class="item-title"><a href="/2017/07/11/create-hexo-them-from-zero-01/" class="title">从零开始创建一个hexo主题-01</a></p>
+              <p class="item-date"><time datetime="2017-07-11T06:58:05.000Z" itemprop="datePublished">2017-07-11</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css预编译器/">css预编译器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo主题/">hexo主题</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css预编译器/" style="font-size: 10px;">css预编译器</a> <a href="/tags/hexo主题/" style="font-size: 20px;">hexo主题</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+<!--<div id="toTop" class="fa fa-angle-up"></div>-->
+<div id="toTop">
+  <img class="scroll" src="/css/images/c.png" alt>
+</div>
+<div id="toButtom">
+  <img class="scroll" src="/css/images/a.png" alt>
+</div>
+
+
+      
+    </div>
+    <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p id="runTime"></p>
+      &copy; 2019 Made with <i class="fa fa-heart throb" style="color: #d43f57;"></i> by NAVI<a style="color: #666;margin-left: 10px;" href="http://beian.miit.gov.cn">粤ICP备17088429号</a><br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/magicianShiro/hexo-theme-navi" target="_blank">NAVI</a><br>
+      
+      <script defer>
+        var getRunTime = function runTimeLoop (time) {
+    let unixDeff = Math.abs(new Date(time).getTime() - Date.now())
+    let day = Math.floor(unixDeff / 86400000)
+    let hoursUnix = unixDeff % 86400000
+    let hours = Math.floor(hoursUnix / 3600000)
+    let miuntesUnix = hoursUnix % 3600000
+    let miuntes = Math.floor(miuntesUnix / 60000)
+    let secondsUnix = miuntesUnix % 60000
+    let seconds = Math.floor(secondsUnix / 1000)
+    this.innerHTML = `博客已萌萌哒运行${day}天${hours}小时${miuntes}分${seconds}秒`
+    setTimeout(runTimeLoop.bind(this, time), 1000)
+  }
+        getRunTime.call(document.getElementById('runTime'), '2017-07-11 14:58:05')
+      </script>
+      
+    </div>
+  </div>
+</footer>
+
+    
+  
+  
+  <script>
+    var disqus_config = function () {
+      
+        this.page.url = 'http://movom.cc/2017/07/11/create-hexo-them-from-zero-01/';
+      
+      this.page.identifier = 'create-hexo-them-from-zero-01';
+    };
+    (function() { 
+      var d = document, s = d.createElement('script');  
+      s.src = '//' + 'movom' + '.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  
+    <script src="//cdn.bootcss.com/lightgallery/1.6.0/js/lightgallery-all.min.js"></script>
+  
+  
+    <script src="//cdn.bootcss.com/justifiedGallery/3.6.3/js/jquery.justifiedGallery.min.js"></script>
+  
+  
+  
+  
+  
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+  </div>
+</body>
+</html>
