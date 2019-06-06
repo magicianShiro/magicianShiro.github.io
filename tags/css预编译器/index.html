@@ -3,15 +3,15 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>标签: css预编译器 | navi&#39;s blog - 陪伴是最长情的告白</title>
+  <title>标签: css预编译器 | navi - 陪伴是最长情的告白</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="navi&#39;s blog">
+<meta property="og:title" content="navi">
 <meta property="og:url" content="http://movom.cc/tags/css预编译器/index.html">
-<meta property="og:site_name" content="navi&#39;s blog">
+<meta property="og:site_name" content="navi">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="navi&#39;s blog">
+<meta name="twitter:title" content="navi">
   
   
   
@@ -74,9 +74,6 @@
   
   
   
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
   
   
   
@@ -91,7 +88,7 @@
     <div class="outer">
       <a href="/" id="logo">
         <i class="logo"></i>
-        <span class="site-title">navi&#39;s blog</span>
+        <span class="site-title">navi</span>
       </a>
       <nav id="main-nav">
         
@@ -119,8 +116,20 @@
       
       <div id="search-form-wrap">
 
-  <!--search_form直接调用了google搜索框 hexo提供-->
-  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://movom.cc"></form>
+  <form class="search-form" method="GET" action="https://www.baidu.com/s?">
+  <input name="wd" type="text" class="search-form-input" placeholder="搜索">
+  <button type="submit" class="search-form-submit"></button>
+</form>
+<script>
+(function ($) {
+  $('.search-form').on('submit', function (e) {
+    var keyword = $('.search-form-input[name="wd"]').val();
+    window.location = 'https://www.baidu.com/s?wd=site:movom.cc ' + keyword;
+    return false;
+  });
+})(jQuery);
+</script>
+
 
 </div>
 
@@ -142,7 +151,20 @@
         
         <td>
           
-  <!-- <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://movom.cc"></form> -->
+  <form class="search-form" method="GET" action="https://www.baidu.com/s?">
+  <input name="wd" type="text" class="search-form-input" placeholder="搜索">
+  <button type="submit" class="search-form-submit"></button>
+</form>
+<script>
+(function ($) {
+  $('.search-form').on('submit', function (e) {
+    var keyword = $('.search-form-input[name="wd"]').val();
+    window.location = 'https://www.baidu.com/s?wd=site:movom.cc ' + keyword;
+    return false;
+  });
+})(jQuery);
+</script>
+
 
 
         </td>
@@ -150,24 +172,6 @@
     </table>
   </div>
 </header>
-
-    
-      
-<div id="site-banner">
-  <div id="site-banner-img">
-    <s class="shadow top-shadow"></s>
-    <s class="shadow bottom-shadow"></s>
-  </div>
-  <div id="site-banner-master">
-    <img class="site-banner-master-avatar" src="//avatars0.githubusercontent.com/u/18321310?s=460&amp;v=4" alt="NAVI">
-    <h2 class="site-banner-master-description">
-      
-        <script src="http://api.movom.cc/hitokoto"></script>
-<div id="hitokoto"><script defer>hitokoto()</script></div>
-      
-    </h2>
-  </div>
-</div>
 
     
     <div class="outer">
@@ -225,8 +229,6 @@
 
       
       <section id="main">
-  <script src="/js/toContent.js"></script>
-
 
 <div class="timeline timeline-wrap">
   <div class="timeline-row timeline-row-major">
@@ -421,7 +423,7 @@
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/magicianShiro/hexo-theme-navi" target="_blank">NAVI</a><br>
       
       <script defer>
-        var getRunTime = function runTimeLoop (time) {
+        var getRunTime = function runTimeLoop(time) {
     let unixDeff = Math.abs(new Date(time).getTime() - Date.now())
     let day = Math.floor(unixDeff / 86400000)
     let hoursUnix = unixDeff % 86400000
@@ -436,28 +438,14 @@
         getRunTime.call(document.getElementById('runTime'), '2017-07-11 14:58:05')
       </script>
       
+        
+      
     </div>
   </div>
 </footer>
 
     
   
-  
-  <script>
-    var disqus_config = function () {
-      
-      this.page.identifier = 'undefined';
-    };
-    (function() { 
-      var d = document, s = d.createElement('script');  
-      s.src = '//' + 'movom' + '.disqus.com/count.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-
-
-
 
 
 
