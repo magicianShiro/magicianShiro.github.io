@@ -597,7 +597,7 @@
       <p><blockquote>
 <p>此篇只是开篇文章，涉及到大量废话，想要直接看干货的，就直接进入<a href="#坑点">坑点部分</a></p>
 </blockquote>
-</p><h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近买了个服务器和域名，想着捣鼓一下博客好了。于是呢。。就找到了hexo，接着又看到了一大堆主题。<br><img src="/2017/07/11/create-hexo-them-from-zero-01/emmm.jpg" title="emmmmmm.."><br>那个琳琅满目，目不暇接。哈。。我可是选择困难症，反正是自己的网站，就自己写个主题好了。所以就有了这篇文章。</p>
+</p><h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近买了个服务器和域名，想着捣鼓一下好了。于是呢。。就找到了hexo，接着又看到了一大堆主题。<br><img src="/2017/07/11/create-hexo-them-from-zero-01/emmm.jpg" title="emmmmmm.."><br>那个琳琅满目，目不暇接。哈。。我可是选择困难症，反正是自己的网站，就自己写个主题好了。所以就有了这篇文章。</p>
 <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>就是看看自己从零开始能遇到多少坑，解决多少坑，同时给有想法的朋友们提供一个借鉴的东西。<br>谜之声：其实就是怕自己懒，搞着搞着不想搞了…<br>这个系列，姑且先叫做这个系列吧，大概能看到哪些内容呢？<br>哈……你还真以为只有 HEXO 的内容啊，太天真了。<br>基本上从零开始到完成，中间用到的知识都会涉及到，但是可能开其他的标题和标签而不算在这个系列之中。但是肯定能跳过去的。<br>例如：怎么把这玩意儿部署到自己的服务器上之类的……</p><p></p>
       <p class="article-more-link">
         <a href="/2017/07/11/create-hexo-them-from-zero-01/#more">查看更多</a>
@@ -846,12 +846,15 @@
     let miuntes = Math.floor(miuntesUnix / 60000)
     let secondsUnix = miuntesUnix % 60000
     let seconds = Math.floor(secondsUnix / 1000)
-    this.innerHTML = `博客已萌萌哒运行${day}天${hours}小时${miuntes}分${seconds}秒`
+    // this.innerHTML = `博客已萌萌哒运行${day}天${hours}小时${miuntes}分${seconds}秒`
     setTimeout(runTimeLoop.bind(this, time), 1000)
   }
         getRunTime.call(document.getElementById('runTime'), '2017-07-11 14:58:05')
       </script>
       
+        
+          <script src="http://api.movom.cc/hitokoto"></script>
+<div id="hitokoto"><script defer>hitokoto()</script></div>
         
       
     </div>

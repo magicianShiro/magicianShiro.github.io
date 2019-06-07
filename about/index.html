@@ -550,12 +550,15 @@
     let miuntes = Math.floor(miuntesUnix / 60000)
     let secondsUnix = miuntesUnix % 60000
     let seconds = Math.floor(secondsUnix / 1000)
-    this.innerHTML = `博客已萌萌哒运行${day}天${hours}小时${miuntes}分${seconds}秒`
+    // this.innerHTML = `博客已萌萌哒运行${day}天${hours}小时${miuntes}分${seconds}秒`
     setTimeout(runTimeLoop.bind(this, time), 1000)
   }
         getRunTime.call(document.getElementById('runTime'), '2017-07-11 14:58:05')
       </script>
       
+        
+          <script src="http://api.movom.cc/hitokoto"></script>
+<div id="hitokoto"><script defer>hitokoto()</script></div>
         
       
     </div>
